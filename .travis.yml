@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t jcarvajals/docker-react-test -f dockerfile.dev .
+
+script:
+  - docker run -e CI=true jcarvajals/docker-react-test npm run test
